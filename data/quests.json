@@ -1,0 +1,35 @@
+{
+  "_comment": "任务表。type: bounty=赏金首（击杀时由战斗结算赏金）, side=讨伐/送货。target: 敌人 id 或道具 id。need: 需要的数量。reward: 在酒吧领取的金币。",
+  "rows": [
+    {
+      "id": "q_scar",
+      "name": "赏金首「天蝎」",
+      "type": "bounty",
+      "target": "en2r_021",
+      "need": 1,
+      "reward": 0,
+      "desc": "挂了三年没人敢接。天蝎盘在废弃军事基地的最深处。",
+      "reward_desc": "击杀即结算 390G，另掉「赤蝎」引擎（唯一，无法购买）"
+    },
+    {
+      "id": "q_scorpion_hunt",
+      "name": "讨伐毒蝎炮 ×3",
+      "type": "side",
+      "target": "en2r_009",
+      "need": 3,
+      "reward": 120,
+      "desc": "酒吧老板：公路上的毒蝎炮最近太猖狂，清三只给你酒钱。",
+      "reward_desc": "交 3 只毒蝎炮的记录，领 120G"
+    },
+    {
+      "id": "q_deliver",
+      "name": "把修理箱送到野外机修工",
+      "type": "side",
+      "target": "it_repair",
+      "need": 1,
+      "reward": 260,
+      "desc": "荒沙带里有个被困的机修工，缺一个修理箱才能修好自己的车。",
+      "reward_desc": "送到沙地 NPC 手上，当场给 260G（修理箱会被收走）"
+    }
+  ]
+}

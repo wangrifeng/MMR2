@@ -1,0 +1,33 @@
+{
+  "_comment": "C 装置表。acc_bonus 是命中修正，crit 参与暴击率，reload 参与攻击次数，speed_trait 是 C 特性提供的攻击次数加成，damage_trait 是伤害特性，attack_rounds 是 C 特性提供的攻击回合数加成。",
+  "rows": [
+    {
+      "id": "cu_basic",
+      "name": "基础C装置",
+      "weight": 60,
+      "acc_bonus": 5,
+      "eva_bonus": 3,
+      "crit": 2,
+      "reload": 4,
+      "speed_trait": 0,
+      "attack_rounds": 0,
+      "damage_trait": 0,
+      "price": 300,
+      "desc": "出厂配置，勉强能用。"
+    },
+    {
+      "id": "cu_hunter",
+      "name": "C装置「猎手」",
+      "weight": 90,
+      "acc_bonus": 12,
+      "eva_bonus": 6,
+      "crit": 5,
+      "reload": 6,
+      "speed_trait": 0,
+      "attack_rounds": 0,
+      "damage_trait": 2,
+      "price": 1600,
+      "desc": "换掉它比换炮更能感觉到命中率的变化。"
+    }
+  ]
+}

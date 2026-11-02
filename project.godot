@@ -1,0 +1,22 @@
+; Engine configuration file.
+; 废土猎人 —— 垂直切片工程
+
+config_version=5
+
+[application]
+
+config/name="废土猎人"
+config/description="末日废土 · 战车改装 · 回合制 RPG（垂直切片）"
+config/features=PackedStringArray("4.3", "GL Compatibility")
+config/icon=""
+run/main_scene="res://scenes/main/main.tscn"
+
+[autoload]
+
+GameData="*res://scripts/autoload/game_data.gd"
+GameState="*res://scripts/autoload/game_state.gd"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

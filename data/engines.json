@@ -1,0 +1,41 @@
+{
+  "_comment": "引擎表。output 即载重上限，同时参与机动值计算：出力/总重 越高，出手越早。",
+  "rows": [
+    {
+      "id": "e_small",
+      "name": "小型引擎",
+      "weight": 180,
+      "output": 900,
+      "price": 0,
+      "can_buy": true,
+      "desc": "初始引擎。只够带一门小炮和一挺机枪。"
+    },
+    {
+      "id": "e_mid",
+      "name": "中型引擎",
+      "weight": 320,
+      "output": 1500,
+      "price": 2100,
+      "can_buy": true,
+      "desc": "换上它才能让装甲卡车装满槽位，但会拖慢机动。"
+    },
+    {
+      "id": "e_heavy",
+      "name": "重型引擎",
+      "weight": 520,
+      "output": 2400,
+      "price": 7800,
+      "can_buy": true,
+      "desc": "唯一能撑起重装坦克的引擎，自重也是最高的。"
+    },
+    {
+      "id": "e_scorpion",
+      "name": "「赤蝎」引擎",
+      "weight": 400,
+      "output": 1900,
+      "price": 0,
+      "can_buy": false,
+      "desc": "赏金首掉落，无法购买。中型与重型之间的关键跳板。"
+    }
+  ]
+}

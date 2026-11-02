@@ -1,0 +1,17 @@
+# Godot 生成的导入缓存与导出目录
+.godot/
+export_presets.cfg
+.import/
+*.import
+
+# 引擎本体与调试产物（不进仓库）
+tools/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# 系统
+.DS_Store
+Thumbs.db

@@ -1,0 +1,3480 @@
+{
+  "_comment": "世界地图分区（MM2R 风格：荒漠大陆 + 公路网 + 自然屏障）。rect = [x, y, w, h]，单位格子；kind: zone=野外遭遇区, town=城镇, base=迷宫入口, npc=野外 NPC。terrain 必须在底盘 terrain 列表里才能进入（road 全车型可走，mountain 仅坦克）。tint 为可选配色。同一格被多个分区覆盖时，行序在前者优先；公路行放在大区分之前，让公路覆盖在大区之上。【怪物池】按强度分档：1号公路/枯林带→低档，荒沙带→中档，盐碱平原→高档前半，前哨山道→高档后半。",
+  "world": {
+    "cols": 48,
+    "rows": 32,
+    "start_tile": [
+      5,
+      15
+    ],
+    "encounter_step_interval": 3
+  },
+  "rows": [
+    {
+      "id": "z_town",
+      "name": "锈镇",
+      "kind": "town",
+      "terrain": "road",
+      "rect": [
+        3,
+        13,
+        8,
+        6
+      ],
+      "encounter_chance": 0.0,
+      "encounters": [],
+      "desc": "唯一的城镇：酒吧、修理厂、武器店、存档点、改装厂。北门通野外。"
+    },
+    {
+      "id": "r_main",
+      "name": "1号公路",
+      "kind": "zone",
+      "terrain": "road",
+      "tint": [
+        0.3,
+        0.29,
+        0.27
+      ],
+      "rect": [
+        11,
+        15,
+        6,
+        3
+      ],
+      "encounter_chance": 0.25,
+      "encounters": [
+        {
+          "enemies": [
+            "en2r_014"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_001"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_002"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_003"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_005"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_003",
+            "en2r_004"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_005",
+            "en2r_006"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_006"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_004"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_0fa"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_007"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_001",
+            "en2r_1dc"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_008"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_011"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_02a"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_009"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_00a"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_1dc"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_012"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_1df"
+          ],
+          "weight": 2
+        }
+      ],
+      "desc": "锈镇向东的唯一柏油路。路面安全，两侧沙地里才有东西。"
+    },
+    {
+      "id": "r_north",
+      "name": "旧矿道岔路",
+      "kind": "zone",
+      "terrain": "road",
+      "tint": [
+        0.28,
+        0.27,
+        0.25
+      ],
+      "rect": [
+        12,
+        12,
+        3,
+        3
+      ],
+      "encounter_chance": 0.0,
+      "encounters": [],
+      "desc": "岔向枯林带的碎石路，当年运矿用的。"
+    },
+    {
+      "id": "r_salt",
+      "name": "盐道",
+      "kind": "zone",
+      "terrain": "road",
+      "tint": [
+        0.33,
+        0.31,
+        0.28
+      ],
+      "rect": [
+        17,
+        19,
+        6,
+        2
+      ],
+      "encounter_chance": 0.0,
+      "encounters": [],
+      "desc": "盐碱平原上唯一一段还能开的硬路面。"
+    },
+    {
+      "id": "z_scrub",
+      "name": "枯林带（低危）",
+      "kind": "zone",
+      "terrain": "sand",
+      "tint": [
+        0.3,
+        0.33,
+        0.2
+      ],
+      "rect": [
+        7,
+        6,
+        10,
+        7
+      ],
+      "encounter_chance": 0.3,
+      "encounters": [
+        {
+          "enemies": [
+            "en2r_015"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_1dd"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_00b"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_019"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_01b"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_016"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_01c"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_030"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_018"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_022"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_024"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_214",
+            "en2r_002"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_0fa",
+            "en2r_211"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_00e"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_211"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_212"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_213"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_214"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_212",
+            "en2r_213"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_035"
+          ],
+          "weight": 1
+        }
+      ],
+      "desc": "锈镇北面的枯树林，地上的落叶下面是碎石。"
+    },
+    {
+      "id": "z_sand",
+      "name": "荒沙带（中危）",
+      "kind": "zone",
+      "terrain": "sand",
+      "tint": [
+        0.4,
+        0.32,
+        0.17
+      ],
+      "rect": [
+        17,
+        7,
+        11,
+        12
+      ],
+      "encounter_chance": 0.45,
+      "encounters": [
+        {
+          "enemies": [
+            "en2r_01d"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_026"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_023"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_031"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_01e"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_037"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_04c"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_010"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_038"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_040"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_032"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_025"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_01f"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_046"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_020"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_029"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_051"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_041"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_048"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_049"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_04a"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_02e"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_061"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_039"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_00c"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_05e"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_045"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_043"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_044"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_03f"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_04e"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_034"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_02f"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_04f"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_050"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_062"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_02d"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_064"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_03b"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_027"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_09c"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_05f"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_052"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_00d"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_053"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_01d",
+            "en2r_026"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_023",
+            "en2r_031"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_01e",
+            "en2r_037"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_04c",
+            "en2r_010"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_038",
+            "en2r_040"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_032",
+            "en2r_025"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_01f",
+            "en2r_046"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_020",
+            "en2r_029"
+          ],
+          "weight": 2
+        }
+      ],
+      "desc": "中级机械兽盘踞的沙带。装甲不够的吉普开进去就是去送修。"
+    },
+    {
+      "id": "z_salt",
+      "name": "盐碱平原（高危）",
+      "kind": "zone",
+      "terrain": "sand",
+      "tint": [
+        0.44,
+        0.42,
+        0.36
+      ],
+      "rect": [
+        17,
+        19,
+        13,
+        7
+      ],
+      "encounter_chance": 0.5,
+      "encounters": [
+        {
+          "enemies": [
+            "en2r_074"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_221"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_225"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_07c"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_086"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_075"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_07c",
+            "en2r_08d"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_028"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_227"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_08d"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_088",
+            "en2r_028"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_110"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_06c",
+            "en2r_074"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_088"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_03e"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_1c3"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_086",
+            "en2r_085"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_073"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_0cf"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_0bf"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_224"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_182"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_03e",
+            "en2r_055"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_06a"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_06b",
+            "en2r_06a"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_0e7"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_06b"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_0d0"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_12d"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_0d0",
+            "en2r_0de"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_12a"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_0de"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_19e"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_161"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_0aa"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_0ca",
+            "en2r_0bf"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_087"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_080"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_0ee"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_081"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_0fb"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_055"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_0dd"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_082"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_084"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_12a",
+            "en2r_0c9"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_106"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_0cf",
+            "en2r_0a4"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_0aa",
+            "en2r_0cd"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_105"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_0a8"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_119"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_072",
+            "en2r_082"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_08a"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_109"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_070",
+            "en2r_080"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_121"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_06f"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_1c6"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_0ab"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_072"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_151"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_0cd"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_11f"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_0a6"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_0f9"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_0ff"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_0ee",
+            "en2r_0d2"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_195",
+            "en2r_0a6"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_195"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_0c9"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_0ca"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_06c"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_070"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_0d1"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_150"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_03c"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_03d"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_11b"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_145"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_03c",
+            "en2r_03d"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_071"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_08a",
+            "en2r_076"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_120"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_07d"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_0dc"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_0a0"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_0fd"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_126"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_222"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_0d1",
+            "en2r_0f0"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_0f9",
+            "en2r_0cc"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_081",
+            "en2r_0c0"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_0fe"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_141"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_143"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_1aa"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_162"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_16a"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_085"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_10c"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_1b6"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_0a4"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_144"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_14a"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_0fe",
+            "en2r_102"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_076"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_0d2"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_0d3"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_158"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_0f0"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_0a2"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_0ab",
+            "en2r_056"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_149"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_08c"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_0bb"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_0bc"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_08f"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_0cc"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_10d"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_15f"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_102"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_11a"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_0dc",
+            "en2r_0d4"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_100"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_1cf"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_1d2"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_03a",
+            "en2r_0a8"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_1c9"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_08f",
+            "en2r_0a7"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_12f"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_130"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_1d0"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_087",
+            "en2r_066"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_1d7"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_123"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_0a7"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_0fc"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_0a1"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_10b"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_13e"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_0bc",
+            "en2r_0c2"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_1d1"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_173"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_090",
+            "en2r_0a2"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_0e7",
+            "en2r_0c7"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_0bd",
+            "en2r_0a1"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_127"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_0c0"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_101"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_1a0"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_0a9",
+            "en2r_0bb"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_06e",
+            "en2r_08c"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_0c2"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_0d4"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_146"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_1d4"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_1d5"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_1d6"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_0dd",
+            "en2r_0ad"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_056"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_0bd"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_0d3",
+            "en2r_0e9"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_1bd"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_0a0",
+            "en2r_0df"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_0fc",
+            "en2r_0af"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_0d7"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_0d8"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_0d9"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_0da"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_0d7",
+            "en2r_0d8"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_0d9",
+            "en2r_0da"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_071",
+            "en2r_065"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_0e5"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_090"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_193"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_0a5"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_101",
+            "en2r_0e2"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_170"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_10a"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_0a9"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_0a3"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_147"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_06e"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_1c7"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_0e3",
+            "en2r_127"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_03a"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_0af"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_117"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_118"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_1be"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_168"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_167"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_0ae",
+            "en2r_0a3"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_0c8"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_0e2"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_12e"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_107"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_0ae"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_0e9"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_180"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_1a1"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_066"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_0c8",
+            "en2r_0ec"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_0ed"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_096"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_097"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_08e"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_185"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_1bb"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_1b2"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_1ce"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_096",
+            "en2r_097"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_0e3"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_057",
+            "en2r_06f"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_0df"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_0ec"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_198"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_07e"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_0eb",
+            "en2r_117"
+          ],
+          "weight": 2
+        }
+      ],
+      "desc": "白得反光的盐壳地，碎石下面埋着被吃干净的底盘。"
+    },
+    {
+      "id": "z_mountain",
+      "name": "前哨山道（坦克限定）",
+      "kind": "zone",
+      "terrain": "mountain",
+      "tint": [
+        0.24,
+        0.24,
+        0.26
+      ],
+      "rect": [
+        28,
+        6,
+        8,
+        15
+      ],
+      "encounter_chance": 0.35,
+      "encounters": [
+        {
+          "enemies": [
+            "en2r_065"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_1c8"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_108"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_148"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_1c0"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_0e1"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_179"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_0c7"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_0ad"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_0ef"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_1cb"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_08e",
+            "en2r_0ce"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_171"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_1c1"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_140"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_154"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_159"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_223"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_1d9"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_131"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_191"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_0ce"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_0eb"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_0e6"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_1a8"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_1e1"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_168",
+            "en2r_0ba"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_164"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_16b"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_1a7"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_226"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_054",
+            "en2r_073"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_196"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_0b2"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_0f6"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_1c2"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_1d3"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_033",
+            "en2r_075"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_1a9"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_10e"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_115"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_15a"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_1e4"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_10f"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_1c4"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_09b"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_091"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_155"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_089",
+            "en2r_115"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_21c"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_21b"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_1b4"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_21a"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_089"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_15e"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_219"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_183"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_1bc"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_14d"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_169"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_1e3"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_0f8"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_057"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_165"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_02b"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_0ba"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_1a5"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_172"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_1c5"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_1bf"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_220"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_175"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_21f"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_21e"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_178"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_21d"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_0a5",
+            "en2r_05d"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_114"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_153"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_186"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_1b3"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_05b"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_1e2"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_16e"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_091",
+            "en2r_0ac"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_188"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_1ba"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_1cc"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_17a"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_197"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_16f"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_189"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_0b3",
+            "en2r_02b"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_0d6",
+            "en2r_0ff"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_17f"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_08b",
+            "en2r_126"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_0c6"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_0ea"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_1ca"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_188",
+            "en2r_093"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_0e0"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_1cd"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_1a3"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_07a"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_194"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_0b0"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_13f"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_0f5"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_059",
+            "en2r_084"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_14f"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_092"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_18d"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_094",
+            "en2r_106"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_093"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_0ac"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_104"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_11c"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_0b1"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_18e"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_1da"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_116"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_13d"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_0c6",
+            "en2r_058"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_0b3"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_12b"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_19d"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_15d"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_054"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_099"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_181"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_187"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_058"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_0db"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_16c"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_05d"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_11e"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_1b9"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_1e0"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_099",
+            "en2r_069"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_177"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_18c"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_033"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_113"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_0f7"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_163"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_176"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_1b7"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_15b"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_0cb"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_069"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_095"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_152"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_18b"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_1a4"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_079"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_1ab"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_184"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_1ec"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_18f"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_0d6"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_08b"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_122"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_132"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_1d8"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_190"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_19b"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_1ac"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_059"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_138"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_1a6"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_112"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_111"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_094"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_17b"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_036",
+            "en2r_07d"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_0f3"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_09a"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_098"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_139"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_13a"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_19c"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_0d5"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_174"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_098",
+            "en2r_063"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_0c1"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_1b0"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_14c"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_14e"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_063"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_166"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_142"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_1a2"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_1e5"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_192"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_0b9"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_078"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_129"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_036"
+          ],
+          "weight": 3
+        },
+        {
+          "enemies": [
+            "en2r_1de"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_0b4"
+          ],
+          "weight": 2
+        },
+        {
+          "enemies": [
+            "en2r_1b5"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_17d"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_0b6"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_0f2"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_15c"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_11d"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_17e"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_14b"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_1db"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_13c"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_23b"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_1e6"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_1eb"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_128"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_23c"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_1ad"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_238"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_1e9"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_1e8"
+          ],
+          "weight": 1
+        },
+        {
+          "enemies": [
+            "en2r_1ed"
+          ],
+          "weight": 1
+        }
+      ],
+      "desc": "通往军事基地的唯一关隘，只有坦克底盘爬得上去。"
+    },
+    {
+      "id": "z_base",
+      "name": "废弃军事基地",
+      "kind": "base",
+      "terrain": "mountain",
+      "rect": [
+        36,
+        12,
+        5,
+        5
+      ],
+      "encounter_chance": 0.0,
+      "encounters": [],
+      "desc": "山道尽头的混凝土工事。赏金首就在下面。"
+    },
+    {
+      "id": "z_mechanic",
+      "name": "机修工·老康",
+      "kind": "npc",
+      "terrain": "sand",
+      "rect": [
+        21,
+        22,
+        2,
+        2
+      ],
+      "encounter_chance": 0.0,
+      "encounters": [],
+      "quest": "q_deliver",
+      "desc": "在盐碱平原边上守着半辆卡车的人。"
+    }
+  ]
+}

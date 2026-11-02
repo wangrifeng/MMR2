@@ -1,0 +1,26 @@
+{
+  "_comment": "废弃军事基地迷宫。cols/rows 为格子数，外圈自动算墙。walls 为矩形 [x, y, w, h]。start=入口格，boss=赏金首格，hidden=隐藏引擎格（只能拿一次）。encounter 规则与野外一致。",
+  "name": "废弃军事基地 · 地下一层",
+  "cols": 19,
+  "rows": 12,
+  "start": [1, 1],
+  "boss": [17, 10],
+  "hidden": [1, 10],
+  "hidden_reward": "e_mid",
+  "boss_enemy": "en2r_021",
+  "encounter_chance": 0.4,
+  "encounter_step_interval": 2,
+  "encounters": [
+    { "enemies": ["en2r_009"], "weight": 2 },
+    { "enemies": ["en2r_018"], "weight": 1 },
+    { "enemies": ["en2r_010"], "weight": 1 }
+  ],
+  "walls": [
+    [3, 2, 3, 3],
+    [8, 2, 3, 3],
+    [13, 2, 3, 3],
+    [3, 6, 3, 3],
+    [8, 6, 3, 2],
+    [13, 6, 3, 3]
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "_comment": "城镇地图（MM2R 风格：可走格子 + 建筑块）。cols/rows 为格子数，最外一圈自动是墙。buildings[].rect = [x, y, w, h] 占据的格子，不可通行；door = 门前格，站上去按 E 进入设施。exit = 出城格，站上去按 E 回到野外。streets 只影响绘制（铺装颜色）。",
+  "id": "town_rust",
+  "name": "锈镇",
+  "cols": 24,
+  "rows": 18,
+  "start": [11, 8],
+  "exit": [11, 1],
+  "exit_label": "北门 · 通往 1 号公路",
+  "streets": [
+    [1, 8, 22, 2],
+    [11, 1, 1, 16]
+  ],
+  "buildings": [
+    { "id": "bar", "name": "锈桶酒吧", "kind": "bar", "rect": [1, 2, 8, 4], "door": [4, 6], "color": [0.43, 0.26, 0.18] },
+    { "id": "repair", "name": "老陈修理厂", "kind": "repair", "rect": [14, 2, 8, 4], "door": [17, 6], "color": [0.29, 0.33, 0.39] },
+    { "id": "shop", "name": "铁砧武器店", "kind": "shop", "rect": [1, 10, 8, 4], "door": [4, 9], "color": [0.40, 0.31, 0.18] },
+    { "id": "garage", "name": "北岸改装厂", "kind": "garage", "rect": [14, 10, 8, 4], "door": [17, 9], "color": [0.24, 0.29, 0.24] },
+    { "id": "save", "name": "旧电台（存档）", "kind": "save", "rect": [9, 13, 3, 3], "door": [10, 12], "color": [0.26, 0.31, 0.37] },
+    { "id": "scrap", "name": "垃圾堆", "kind": "scrap", "rect": [12, 5, 2, 2], "door": [12, 7], "color": [0.31, 0.28, 0.22] }
+  ]
+}

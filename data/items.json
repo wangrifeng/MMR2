@@ -1,0 +1,50 @@
+{
+  "_comment": "道具表。type: material=只能卖, repair=恢复装甲, ammo=补充弹药。effect 字段含义随 type 变化。",
+  "rows": [
+    {
+      "id": "it_scrap",
+      "name": "废铁",
+      "type": "material",
+      "price": 0,
+      "sell_price": 15,
+      "effect": {},
+      "desc": "唯一的通用素材，只值钱，没有别的用。"
+    },
+    {
+      "id": "it_repair",
+      "name": "修理箱",
+      "type": "repair",
+      "price": 400,
+      "sell_price": 160,
+      "effect": { "armor": 80 },
+      "desc": "野外急救用。比回城修理贵，但能救命。"
+    },
+    {
+      "id": "it_ammo_main",
+      "name": "主炮弹 ×4",
+      "type": "ammo",
+      "price": 120,
+      "sell_price": 40,
+      "effect": { "slot": "main", "qty": 4 },
+      "desc": "按 30G/发 定价，买它就是花钱买输出。"
+    },
+    {
+      "id": "it_ammo_sub",
+      "name": "副炮弹 ×20",
+      "type": "ammo",
+      "price": 40,
+      "sell_price": 12,
+      "effect": { "slot": "sub", "qty": 20 },
+      "desc": "便宜量大，但补不满 60 发的机枪。"
+    },
+    {
+      "id": "it_ammo_se",
+      "name": "SE弹 ×2",
+      "type": "ammo",
+      "price": 120,
+      "sell_price": 40,
+      "effect": { "slot": "se", "qty": 2 },
+      "desc": "按 60G/发 定价，最贵的弹药。"
+    }
+  ]
+}

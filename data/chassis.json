@@ -1,0 +1,60 @@
+{
+  "_comment": "底盘表。armor 作为伤害吸收池；slots 决定可装武器数量与单件最大尺寸；terrain 决定可通行地形；speed_trait 是底盘特性提供的攻击次数加成，damage_trait 是底盘特性提供的伤害加成，attack_rounds 是底盘特性提供的攻击回合数加成。",
+  "rows": [
+    {
+      "id": "c_buggy",
+      "name": "越野吉普",
+      "weight": 380,
+      "armor": 120,
+      "def": 0,
+      "speed_trait": 0,
+      "attack_rounds": 0,
+      "damage_trait": 0,
+      "slots": [
+        { "type": "main", "size": "S" },
+        { "type": "sub", "size": "S" }
+      ],
+      "terrain": ["road", "sand"],
+      "price": 0,
+      "desc": "初始车辆。轻、快，但装甲薄，扛不住两轮炮击。"
+    },
+    {
+      "id": "c_truck",
+      "name": "装甲卡车",
+      "weight": 720,
+      "armor": 200,
+      "def": 4,
+      "speed_trait": 0,
+      "attack_rounds": 0,
+      "damage_trait": 0,
+      "slots": [
+        { "type": "main", "size": "M" },
+        { "type": "sub", "size": "S" },
+        { "type": "sub", "size": "S" },
+        { "type": "se", "size": "S" }
+      ],
+      "terrain": ["road", "sand"],
+      "price": 1800,
+      "desc": "槽位多，但自重高，配中型引擎时很容易超载。"
+    },
+    {
+      "id": "c_tank",
+      "name": "轻型坦克",
+      "weight": 1100,
+      "armor": 340,
+      "def": 10,
+      "speed_trait": 0,
+      "attack_rounds": 0,
+      "damage_trait": 0,
+      "slots": [
+        { "type": "main", "size": "L" },
+        { "type": "sub", "size": "M" },
+        { "type": "sub", "size": "M" },
+        { "type": "se", "size": "M" }
+      ],
+      "terrain": ["road", "sand", "mountain"],
+      "price": 6800,
+      "desc": "唯一能上山地的底盘，也是唯一装得下电磁炮的。"
+    }
+  ]
+}

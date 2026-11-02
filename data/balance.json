@@ -1,0 +1,103 @@
+{
+  "_comment": "全局平衡参数。战斗公式里所有系数都必须从这里读，代码中不允许出现魔法数。legacy combat 段仍被 M0 模拟器与改装厂使用；combat_v2 是 M4 六边形战棋的战斗公式系数。",
+  "combat": {
+    "hit_base_min": 30,
+    "hit_base_max": 99,
+    "damage_variance": 0.1,
+    "defense_factor": 0.5,
+    "crit_rate": 0.05,
+    "crit_multiplier": 1.5,
+    "min_damage": 1,
+    "player_speed": 18
+  },
+  "combat_v2": {
+    "_comment": "严格按《战斗数值策划文档 V1.0》：每次攻击独立走 命中→暴击→伤害；攻击次数 floor 保底 1；命中/暴击 sigmoid 后钳位；距离伤害与距离暴击反向联动。",
+    "attack_count": {
+      "char_k_personality": 0.15,
+      "char_k_speed": 0.08,
+      "char_k_weapon": 0.2,
+      "veh_k_driver": 0.07,
+      "veh_k_weapon": 0.2,
+      "veh_k_reload": 0.12,
+      "veh_k_cunit_trait": 0.15,
+      "veh_k_chassis_trait": 0.15,
+      "min": 1
+    },
+    "attack_rounds": {
+      "_comment": "攻击回合数：人物 = 性格加成 + 武器自带回合数；战车 = C特性加成 + 底盘特性加成 + 武器自带回合数。与 attack_count（一回攻击几次）相乘得到一次攻击的总发数。weapon_default 是武器表未填 atk_rounds 时的兜底值。",
+      "weapon_default": 1,
+      "min": 1,
+      "max": 4
+    },
+    "hit": {
+      "k_weapon_acc": 0.03,
+      "k_hit_mod": 0.04,
+      "k_driver": 0.025,
+      "k_agi": 0.02,
+      "k_distance": 0.06,
+      "k_range": 0.05,
+      "k_trait": 0.04,
+      "in_range_bonus": 1,
+      "k_eva": 1.0,
+      "max_eva_cut": 0.5,
+      "min": 0.05,
+      "max": 0.95
+    },
+    "overrange": {
+      "_comment": "超出武器最大射程的强攻：最远可打到 range_max × range_multiplier；命中率按倍数衰减，每多 1 格再扣固定值，且必定不暴击；近战武器不适用。",
+      "range_multiplier": 2,
+      "hit_multiplier": 0.30,
+      "per_hex_penalty": 0.05,
+      "min_hit": 0.05
+    },
+    "crit": {
+      "k_weapon_base": 0.18,
+      "k_crit_mod": 0.15,
+      "k_agi": 0.03,
+      "k_distance": 0.15,
+      "crit_correction": 0.5,
+      "bias": -2.6,
+      "min": 0.01,
+      "max": 0.7,
+      "true_sub_rate": 0.2,
+      "normal_multiplier": 1.5,
+      "true_multiplier": 1.5
+    },
+    "damage": {
+      "k_dmg": 0.3,
+      "def_factor": 1.0,
+      "min": 1
+    }
+  },
+  "speed": {
+    "formula": "clamp(round(engine.output / vehicle.total_weight * 20), 5, 40)",
+    "weight_factor": 20,
+    "min": 5,
+    "max": 40
+  },
+  "economy": {
+    "start_gold": 500,
+    "repair_price_per_armor": 3,
+    "ammo_price": { "main": 30, "sub": 2, "se": 60 },
+    "defeat_gold_loss_rate": 0.2,
+    "defeat_tow_gold": 100
+  },
+  "battle": {
+    "max_units_per_side": 4,
+    "auto_reload_after_battle": false,
+    "grid_cols": 11,
+    "grid_rows": 9,
+    "player_start_col": 1,
+    "enemy_start_col": 9,
+    "mp_divisor": 8,
+    "mp_min": 2,
+    "mp_max": 6,
+    "max_rounds": 30,
+    "obstacles": {
+      "_comment": "随机障碍物：只生成在单位及其周围 clear_ring 圈之外，每场数量在 min_count~max_count 之间，生成时优先靠近棋盘中间；挡移动、挡远程弹道；战车可轰碎，人物打不碎。",
+      "min_count": 3,
+      "max_count": 5,
+      "clear_ring": 1
+    }
+  }
+}

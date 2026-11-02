@@ -1,0 +1,60 @@
+{
+  "_comment": "玩家角色表。垂直切片只有一名主角，人类形态战斗时使用这些数值。weapons 为步行参战时的随身武器：近战武器必须相邻才能攻击，远程武器有独立射程。hit_mod 是命中修正，crit_mod 是暴击修正，personality_attack 是人物性格提供的攻击次数加成，personality_rounds 是人物性格提供的攻击回合数加成。",
+  "rows": [
+    {
+      "id": "p_hunter",
+      "name": "猎人",
+      "hp": 40,
+      "atk": 15,
+      "def": 5,
+      "acc": 80,
+      "hit_mod": 0,
+      "eva": 10,
+      "spd": 18,
+      "drive_level": 10,
+      "agi_level": 12,
+      "force_level": 15,
+      "weapon_level": 10,
+      "crit_mod": 0,
+      "personality_attack": 0,
+      "personality_rounds": 0,
+      "weapons": [
+        {
+          "id": "w_knife",
+          "name": "猎刀",
+          "melee": true,
+          "range_min": 1,
+          "range_max": 1,
+          "atk_min": 10,
+          "atk_max": 16,
+          "atk_rounds": 1,
+          "acc": 80,
+          "atk_speed": 6,
+          "crit": 4,
+          "hit_trait": 0,
+          "damage_trait": 0,
+          "aoe": false,
+          "aoe_radius": 0
+        },
+        {
+          "id": "w_pistol",
+          "name": "左轮手枪",
+          "melee": false,
+          "range_min": 1,
+          "range_max": 3,
+          "atk_min": 8,
+          "atk_max": 14,
+          "atk_rounds": 1,
+          "acc": 75,
+          "atk_speed": 4,
+          "crit": 5,
+          "hit_trait": 0,
+          "damage_trait": 0,
+          "aoe": false,
+          "aoe_radius": 0
+        }
+      ],
+      "desc": "没有战车时只能白兵作战，伤害约为吉普主炮的六分之一。"
+    }
+  ]
+}
