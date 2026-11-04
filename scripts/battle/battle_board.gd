@@ -47,6 +47,9 @@ var _move_dir: float = 1.0
 var _shots: Array = []      # 飞行中的炮弹 {from, to, t, dur, cells}
 var _booms: Array = []      # 受击爆炸 {cell, t, spin}
 const BOOM_DURATION := 0.80
+var _popups: Array = []     # 头顶飘字 {pos, text, style, t, delay, dur}
+const POPUP_DURATION := 0.95
+const POPUP_STACK_STEP := 0.34   # 同一格多次命中时逐条向上错开（按 hex_size 倍数）
 
 var _enemy_tex_cache: Dictionary = {}   # 敌人贴图路径 → Texture2D（无图存 null）
 
@@ -73,7 +76,7 @@ func set_state(cols: int, rows: int, unit_list: Array, active,
 
 func _process(delta: float) -> void:
 	if active_unit == null and _firing_unit == null and _move_unit == null \
-			and _shots.is_empty() and _booms.is_empty():
+			and _shots.is_empty() and _booms.is_empty() and _popups.is_empty():
 		return
 	_clock += delta
 	if _firing_unit != null:
@@ -87,6 +90,7 @@ func _process(delta: float) -> void:
 			_move_unit = null
 	_tick_shots(delta)
 	_tick_booms(delta)
+	_tick_popups(delta)
 	queue_redraw()
 
 
@@ -118,12 +122,16 @@ func play_move(unit, from_cell: Vector2i, path: Array) -> void:
 
 
 func play_attack(attacker, weapon: Dictionary, results: Array) -> void:
-	## 开火特写：战车先播后坐帧，远程武器再飞一颗炮弹过去，命中后目标身上炸开。
+	## 开火特写：战车先播后坐帧，远程武器再飞一颗炮弹过去，命中后目标身上炸开；
+	## 同时在每个受击单位头顶飘出伤害数字（白=普通，红=暴击，彩虹=真实暴击，MISS=未命中）。
 	if attacker == null:
 		return
 	if attacker.is_vehicle and attacker.is_player:
 		play_fire(attacker)
+	var melee := bool(weapon.get("melee", false))
 	var cells: Array = []
+	var stack: Dictionary = {}
+	var from: Vector2 = _unit_pos(attacker)
 	for r in results:
 		# 被障碍物挡住的射击把炮弹落在障碍物上；打碎障碍物的结果本身 target 为 null
 		var blocked_cell = r.get("blocked_cell", null)
@@ -133,14 +141,21 @@ func play_attack(attacker, weapon: Dictionary, results: Array) -> void:
 		var t = r.get("target", null)
 		if t != null:
 			cells.append(t.cell)
+			var key: String = "%d,%d" % [t.cell.x, t.cell.y]
+			var n: int = int(stack.get(key, 0))
+			stack[key] = n + 1
+			var delay := 0.0
+			if not melee:
+				delay = clampf(from.distance_to(cell_center(t.cell)) / hex_size * 0.045,
+					0.09, 0.26)
+			_spawn_popup(t, r, n, delay)
 	if cells.is_empty():
 		return
-	if bool(weapon.get("melee", false)):
+	if melee:
 		for cell in cells:
 			_spawn_boom(cell)
 		queue_redraw()
 		return
-	var from: Vector2 = _unit_pos(attacker)
 	var to: Vector2 = cell_center(cells[0])
 	var dir: Vector2 = (to - from)
 	if dir.length() < 1.0:
@@ -186,6 +201,35 @@ func _tick_booms(delta: float) -> void:
 		if b.t < BOOM_DURATION:
 			alive.append(b)
 	_booms = alive
+
+
+func _spawn_popup(target, result: Dictionary, stack_index: int, delay: float) -> void:
+	## 受击飘字：命中显示伤害数字，未命中显示 MISS 并标错。
+	var hit := bool(result.get("hit", false))
+	var style := "miss"
+	if hit:
+		style = str(result.get("crit", "none"))
+	var text := "MISS" if not hit else str(int(result.get("damage", 0)))
+	var pos: Vector2 = cell_center(target.cell) \
+		+ Vector2(0, -hex_size * 1.30 - float(stack_index) * hex_size * POPUP_STACK_STEP)
+	_popups.append({"pos": pos, "text": text, "style": style, "t": 0.0,
+		"delay": delay, "dur": POPUP_DURATION})
+	set_process(true)
+
+
+func _tick_popups(delta: float) -> void:
+	if _popups.is_empty():
+		return
+	var alive: Array = []
+	for p in _popups:
+		if p.delay > 0.0:
+			p.delay -= delta
+			alive.append(p)
+			continue
+		p.t += delta
+		if p.t < p.dur:
+			alive.append(p)
+	_popups = alive
 
 
 func _notification(what: int) -> void:
@@ -285,6 +329,7 @@ func _draw() -> void:
 			_draw_unit(u, font)
 	_draw_shots()
 	_draw_booms()
+	_draw_popups(font)
 	_draw_hint(font)
 
 
@@ -336,6 +381,61 @@ func _draw_booms() -> void:
 			var p0: Vector2 = c + Vector2(cos(a), sin(a)) * len1 * 0.52
 			var p1: Vector2 = c + Vector2(cos(a), sin(a)) * len1
 			draw_line(p0, p1, Color(1.0, 0.86, 0.46, 0.90 * (1.0 - t)), 2.0)
+
+
+func _draw_popups(font) -> void:
+	## 头顶飘字：先弹一下，再上浮淡出。颜色按结果区分。
+	if font == null:
+		return
+	for p in _popups:
+		if p.delay > 0.0:
+			continue
+		var k: float = clampf(p.t / p.dur, 0.0, 1.0)
+		var alpha: float = 1.0 if k <= 0.62 else maxf(0.0, 1.0 - (k - 0.62) / 0.38)
+		if alpha <= 0.0:
+			continue
+		var rise: float = -hex_size * 0.62 * (1.0 - pow(1.0 - k, 2.0))
+		var s: float = 0.62 + 0.38 * clampf(p.t / 0.11, 0.0, 1.0)
+		var fsize := clampi(int(hex_size * 0.64), 13, 32)
+		if p.style == "crit":
+			fsize = int(float(fsize) * 1.20)
+		elif p.style == "true":
+			fsize = int(float(fsize) * 1.38)
+		elif p.style == "miss":
+			fsize = int(float(fsize) * 0.92)
+		var txt: String = p.text
+		var txt_w: float = font.get_string_size(txt, HORIZONTAL_ALIGNMENT_LEFT, -1, fsize).x
+		var sx: float = -txt_w * 0.5
+		var base_y: float = float(fsize) * 0.36
+		var outline: int = maxi(2, int(round(float(fsize) * 0.14)))
+		var outline_col := Color(0.06, 0.05, 0.04, 0.88 * alpha)
+		draw_set_transform(p.pos + Vector2(0, rise), 0.0, Vector2(s, s))
+		if p.style == "true":
+			# 真实暴击：每个字单独取色，色相随时间滚动形成彩虹。
+			var x: float = sx
+			for i in txt.length():
+				var ch: String = txt[i]
+				var cw: float = font.get_string_size(ch, HORIZONTAL_ALIGNMENT_LEFT, -1,
+					fsize).x
+				var col := Color.from_hsv(fmod(float(i) * 0.14 + _clock * 0.55, 1.0), 0.88, 1.0)
+				col.a = alpha
+				draw_string_outline(font, Vector2(x, base_y), ch, HORIZONTAL_ALIGNMENT_LEFT,
+					-1, fsize, outline, outline_col)
+				draw_string(font, Vector2(x, base_y), ch, HORIZONTAL_ALIGNMENT_LEFT,
+					-1, fsize, col)
+				x += cw
+		else:
+			var col := Color(1.0, 1.0, 1.0)
+			if p.style == "crit":
+				col = Color(1.0, 0.24, 0.16)
+			elif p.style == "miss":
+				col = Color(0.80, 0.84, 0.90)
+			col.a = alpha
+			draw_string_outline(font, Vector2(sx, base_y), txt, HORIZONTAL_ALIGNMENT_LEFT,
+				txt_w, fsize, outline, outline_col)
+			draw_string(font, Vector2(sx, base_y), txt, HORIZONTAL_ALIGNMENT_LEFT,
+				txt_w, fsize, col)
+		draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
 
 
 func _draw_hex(cell: Vector2i) -> void:
